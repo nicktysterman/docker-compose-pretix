@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+
+  pretix:
+    image: nicktijuana/pretix-standalone:latest #use your prefferred pretix docker container
+    container_name: pretix_app
+    restart: always 
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - /mnt/docker/pretix/data:/data
+      - /mnt/docker/pretix/conf:/etc/pretix
+    ports:
+      - "8000:80"
+    networks:
+      - web
+      - stack_network
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_DB=pretix
+      - POSTGRES_USER=pretix
+      - POSTGRES_PASSWORD=
+      - POSTGRES_HOST_AUTH_METHOD=trust #uncomment if postgres does not want to connect
+    ports:
+      - "5432:5432"
+    volumes:
+      - /mnt/docker/pretix/postgresql:/var/lib/postgresql/data
+    networks:
+      - stack_network
+
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - stack_network
+
+networks: 
+  web:
+    external: true
+  stack_network:
+    external: false
