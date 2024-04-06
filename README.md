@@ -57,3 +57,5 @@ Step 6: Once the container are running and you see no errors, make sure your rev
 
 Conclusion
 You've successfully set up a Pretix instance using Docker! You can now customize and manage your ticketing system efficiently. Refer to the Pretix documentation for advanced configuration and usage.
+
+For more information, visit https://docs.pretix.eu/en/latest/admin/installation/docker_smallscale.html
