@@ -13,10 +13,12 @@ Optionally, a container manager like Portainer
 
 Create the folderstructure
 
+```bash
 mkdir -p /mnt/docker/pretix/data
 mkdir -p /mnt/docker/pretix/conf
 chown -R 15371:15371 /mnt/docker/pretix/ 
 mkdir -p /mnt/docker/pretix/postgresql
+```
 
 **Installation using portainer**
 
@@ -38,9 +40,15 @@ Step 1: Ensure Docker is installed on your VPS. If not, follow the official inst
 
 Step 2: Download the Dockerfile, pretix.cfg, and docker-compose.yml files and place them in an acccesible folder on your VPS, then edit the files to meet your needs. Put your config file for the pretix installation to /mnt/docker/pretix/conf/pretix.cfg.
 
-Step 3: run the command _docker build . -t pretix-with-plugins_
+Step 3: run the command 
+```bash
+docker build . -t pretix-with-plugins
+```
 
-Step 4: run the command _docker compose up_
+Step 4: run the command
+```bash
+docker compose up
+```
 
 Step 5: Get a cup of coffee, this might take a minute.
 
