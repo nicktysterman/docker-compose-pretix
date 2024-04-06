@@ -1,5 +1,4 @@
 # Setting Up Pretix Instances with Docker
-Introduction
 This guide provides instructions on setting up Pretix instances using Docker, a containerization platform. Pretix is an open-source ticketing system known for its flexibility, ideal for study associations and similar organizations. By following these steps, you can quickly deploy Pretix instances on Virtual Private Servers (VPS) either owned by the organization or on your own VPS for short-term purposes.
 
 **Prerequisites**
