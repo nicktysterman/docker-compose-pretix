@@ -6,7 +6,7 @@ Access to a VPS or a Docker-supported environment.
 Basic understanding of Docker and containerization concepts.
 A reverse proxy, to keep it simple you can use nginx proxy manager in Docker.
 Access to the DNS of the domain you wish to use.
-Optionally, a container manager like Portainer
+Optionally, a container manager like Portainer.
 
 **Before installation**
 
