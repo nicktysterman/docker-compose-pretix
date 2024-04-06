@@ -3,29 +3,29 @@ version: '3'
 services:
 
   pretix:
-    image: nicktijuana/pretix-standalone:latest #use your prefferred pretix docker container
+    image: pretix-with-plugins:latest        # this is the image you built with the Dockerfile!
     container_name: pretix_app
     restart: always 
     depends_on:
       - db
       - redis
     volumes:
-      - /mnt/docker/pretix/data:/data
-      - /mnt/docker/pretix/conf:/etc/pretix
+      - /mnt/docker/pretix/data:/data         # edit the path, if needed.
+      - /mnt/docker/pretix/conf:/etc/pretix   # edit the path, if needed.
     ports:
-      - "8000:80"
+      - "55580:80"                            # edit the port, if needed. In this case, point to 55580 with your reverse proxy! 
     networks:
       - web
       - stack_network
 
   db:
-    image: postgres:latest
+    image: postgres:latest                    # some older guides suggest mariadb of msql, pretix only works with postgresql since April 2023!
     restart: always
     environment:
       - POSTGRES_DB=pretix
       - POSTGRES_USER=pretix
       - POSTGRES_PASSWORD=
-      - POSTGRES_HOST_AUTH_METHOD=trust #uncomment if postgres does not want to connect
+#      - POSTGRES_HOST_AUTH_METHOD=trust      # this line is not recommended and should be commented, however sometimes postgresql wont start and this can fix that.. use at your own risk
     ports:
       - "5432:5432"
     volumes:
